@@ -6,6 +6,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,6 +14,8 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class HelloWorld extends AppCompatActivity implements View.OnClickListener {
+
+    private static final String TAG = "HelloWorld";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,5 +80,47 @@ public class HelloWorld extends AppCompatActivity implements View.OnClickListene
                 break;
         }
         startActivity(mIntent);
+    }
+
+    @Override
+    protected void onDestroy() {
+        // TODO Auto-generated method stub
+        Log.i(TAG, "Activity: onDestroy()");
+        super.onDestroy();
+    }
+
+    @Override
+    protected void onPause() {
+        // TODO Auto-generated method stub super.onPause();
+        Log.i(TAG, "Activity: onPause()");
+        super.onPause();
+    }
+
+    @Override
+    protected void onRestart() {
+        // TODO Auto-generated method stub super.onRestart();
+        Log.i(TAG, "Activity: onRestart()");
+        super.onRestart();
+    }
+
+    @Override
+    protected void onResume() {
+        // TODO Auto-generated method stub super.onResume();
+        Log.i(TAG, "Activity: onResume()");
+        super.onResume();
+    }
+
+    @Override
+    protected void onStart() {
+        // TODO Auto-generated method stub super.onStart();
+        Log.i(TAG, "Activity: onStart()");
+        super.onStart();
+    }
+
+    @Override
+    protected void onStop() {
+        // TODO Auto-generated method stub super.onStop();
+        Log.i(TAG, "Activity: onStop()");
+        super.onStop();
     }
 }
