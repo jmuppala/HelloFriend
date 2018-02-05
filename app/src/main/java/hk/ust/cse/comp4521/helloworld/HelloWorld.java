@@ -1,5 +1,6 @@
 package hk.ust.cse.comp4521.helloworld;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,8 +9,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
+import android.widget.EditText;
 
-public class HelloWorld extends AppCompatActivity {
+public class HelloWorld extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +29,12 @@ public class HelloWorld extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        Button helloButton = (Button) findViewById(R.id.helloButton);
+        helloButton.setOnClickListener(this);
+
+        Button goodbyeButton = (Button) findViewById(R.id.goodbyeButton);
+        goodbyeButton.setOnClickListener(this);
     }
 
     @Override
@@ -48,5 +57,25 @@ public class HelloWorld extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View view) {
+        EditText friendName = (EditText) findViewById(R.id.friendName);
+        String name = friendName.getText().toString();
+
+        Intent mIntent = new Intent(this, ShowMessage.class);
+
+        switch(view.getId()) {
+            case R.id.helloButton:
+                mIntent.putExtra("Friend", "Hello " + name + "!");
+                break;
+            case R.id.goodbyeButton:
+                mIntent.putExtra("Friend", "Goodbye " + name + "!");
+                break;
+            default:
+                break;
+        }
+        startActivity(mIntent);
     }
 }
